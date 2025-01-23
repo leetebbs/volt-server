@@ -2,9 +2,13 @@ const dotenv = require("dotenv");
 dotenv.config();
 const ethers = require("ethers");
 const express = require("express");
+const cors = require("cors");
 const { neon } = require("@neondatabase/serverless");
 const app = express();
 const sql = neon(`${process.env.DATABASE_URL}`);
+
+app.use(cors());
+
 
 app.get("/", (req, res) => {
   res.send("Hello World");
